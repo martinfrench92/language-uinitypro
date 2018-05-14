@@ -4,11 +4,34 @@
 'scopeName': 'source.unitypro'
 'name': 'Unitypro'
 'fileTypes': [
-  'extension'
+  'st'
 ]
 'patterns': [
   {
-    'match': '^\\s*@@.*$'
-    'name': 'comment'
+    'begin': '(\\(\\*)'
+    'beginCaptures':
+      '0': # The 0 capture contains the entire match
+        'name': 'comment.block.start.unitypro'
+    'end': '(\\*\\))'
+    'endCaptures':
+      '0':
+        'name': 'comment.block.end.unitypro'
+    'name': 'comment.block.unitypro'
+  }
+  {
+    'match': '(?i)\\b(for|to|by|do|if|then|end_if|end_for|while|end_while|and|or|elsif|else)\\b'
+    'name': 'keyword.control.unitypro'
+  }
+  {
+    'match': '!=|<=|>=|=|<|>'
+    'name': 'keyword.operator.comparison.unitypro'
+  }
+  {
+    'match': ':='
+    'name': 'keyword.operator.assignment.unitypro'
+  }
+  {
+    'match': '\\b((0(x|X)[0-9a-fA-F]([0-9a-fA-F\']*[0-9a-fA-F])?)|(0(b|B)[01]([01\']*[01])?)|(([0-9]([0-9\']*[0-9])?\\.?[0-9]*([0-9\']*[0-9])?)|(\\.[0-9]([0-9\']*[0-9])?))((e|E)(\\+|-)?[0-9]([0-9\']*[0-9])?)?)(L|l|UL|ul|u|U|F|f|ll|LL|ull|ULL)?\\b'
+    'name': 'constant.numeric.unitypro'
   }
 ]
